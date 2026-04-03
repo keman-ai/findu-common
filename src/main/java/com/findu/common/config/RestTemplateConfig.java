@@ -10,6 +10,7 @@ import org.apache.hc.core5.util.Timeout;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
@@ -22,6 +23,7 @@ import java.util.concurrent.TimeUnit;
  * RestTemplate配置类，使用HttpClient 5提供连接池管理能力。
  */
 @Configuration
+@ConditionalOnClass(name = "org.apache.hc.client5.http.classic.HttpClient")
 public class RestTemplateConfig {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RestTemplateConfig.class);
