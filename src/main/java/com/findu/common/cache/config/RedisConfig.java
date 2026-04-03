@@ -8,6 +8,7 @@ import io.lettuce.core.TimeoutOptions;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -25,6 +26,7 @@ import java.time.Duration;
  * Redis 配置类，提供连接池管理能力。
  */
 @Configuration
+@ConditionalOnClass(name = "org.springframework.data.redis.connection.RedisConnectionFactory")
 @EnableConfigurationProperties(RedisProperties.class)
 public class RedisConfig {
 

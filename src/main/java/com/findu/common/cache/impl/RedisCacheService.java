@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Component;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.util.StringUtils;
 
 import java.time.Duration;
@@ -21,6 +22,7 @@ import java.util.stream.Collectors;
  * Redis 缓存服务实现。
  * 基础设施层提供缓存能力，不关心具体的业务数据类型。
  */
+@ConditionalOnClass(name = "org.springframework.data.redis.core.RedisTemplate")
 @Component
 public class RedisCacheService implements CacheService {
 
