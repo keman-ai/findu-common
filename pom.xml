@@ -121,4 +121,11 @@
     </dependencies>
 
     <!-- NO spring-boot-maven-plugin: this is a library jar -->
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>GitHub Packages</name>
+            <url>https://maven.pkg.github.com/keman-ai/findu-common</url>
+        </repository>
+    </distributionManagement>
 </project>
