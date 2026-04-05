@@ -11,7 +11,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
 import org.springframework.core.annotation.Order;
-import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.util.ContentCachingRequestWrapper;
 import org.springframework.web.util.ContentCachingResponseWrapper;
@@ -30,7 +29,6 @@ import java.util.UUID;
  * 2. 请求体和响应体的缓存包装
  * 3. 统一的请求和响应日志记录
  */
-@Component
 @Order(1) // 确保最早执行
 public class RequestLoggingFilter implements Filter {
 

@@ -4,11 +4,8 @@ import com.findu.common.cache.CacheService;
 import com.findu.common.util.FastJsonHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.redis.core.RedisTemplate;
-import org.springframework.stereotype.Component;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.util.StringUtils;
 
 import java.time.Duration;
@@ -22,17 +19,18 @@ import java.util.stream.Collectors;
  * Redis 缓存服务实现。
  * 基础设施层提供缓存能力，不关心具体的业务数据类型。
  */
-@ConditionalOnClass(name = "org.springframework.data.redis.core.RedisTemplate")
-@Component
 public class RedisCacheService implements CacheService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RedisCacheService.class);
 
-    @Autowired
-    private RedisTemplate<String, Object> redisTemplate;
+    private final RedisTemplate<String, Object> redisTemplate;
+    private final String activeProfile;
 
-    @Value("${spring.profiles.active}")
-    private String activeProfile;
+    public RedisCacheService(RedisTemplate<String, Object> redisTemplate,
+                             @Value("${spring.profiles.active}") String activeProfile) {
+        this.redisTemplate = redisTemplate;
+        this.activeProfile = activeProfile;
+    }
 
     /**
      * 根据 spring.profiles.active 在 key 后追加环境后缀，如 ":stable"、":prod"、":dev"。

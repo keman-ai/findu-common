@@ -9,7 +9,6 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
@@ -22,7 +21,6 @@ import java.util.Map;
  * findu-trade 币种接口 HTTP 客户端。
  * 调用 GET {trade.service.base-url}/api/v1/public/currencies 获取启用的币种列表。
  */
-@Component
 public class CurrencyClient {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CurrencyClient.class);

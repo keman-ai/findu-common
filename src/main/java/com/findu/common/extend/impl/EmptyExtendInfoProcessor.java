@@ -3,7 +3,6 @@ package com.findu.common.extend.impl;
 import com.findu.common.extend.ExtendInfoProcessor;
 import com.findu.common.exception.BusinessException;
 import com.findu.common.exception.ErrorCode;
-import org.springframework.stereotype.Component;
 
 import java.util.*;
 
@@ -13,7 +12,6 @@ import java.util.*;
  * 这些类型不需要扩展信息，但保持统一的处理流程
  * 注意：type=2和type=3使用MyServiceExtendInfoProcessor处理扩展信息
  */
-@Component
 public class EmptyExtendInfoProcessor implements ExtendInfoProcessor {
     
     /**

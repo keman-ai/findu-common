@@ -5,7 +5,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.core.task.TaskDecorator;
 import org.springframework.core.task.TaskExecutor;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
@@ -18,7 +17,6 @@ import java.util.Map;
  * 异步任务配置。
  * 配置线程池，并支持子线程继承父线程的上下文（TraceId、MDC、RequestContext）。
  */
-@Configuration
 public class AsyncConfig {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AsyncConfig.class);

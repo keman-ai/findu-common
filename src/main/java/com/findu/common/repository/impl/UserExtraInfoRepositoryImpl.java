@@ -4,8 +4,6 @@ import com.findu.common.model.UserExtraInfo;
 import com.findu.common.repository.UserExtraInfoRepository;
 import com.findu.common.mapper.UserExtraInfoMapper;
 import com.findu.common.repository.po.UserExtraInfoPO;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -13,7 +11,6 @@ import java.util.stream.Collectors;
 /**
  * 用户扩展信息仓储实现。
  */
-@Repository
 public class UserExtraInfoRepositoryImpl implements UserExtraInfoRepository {
 
     /**
@@ -26,7 +23,6 @@ public class UserExtraInfoRepositoryImpl implements UserExtraInfoRepository {
      *
      * @param userExtraInfoMapper Mapper 实例
      */
-    @Autowired
     public UserExtraInfoRepositoryImpl(UserExtraInfoMapper userExtraInfoMapper) {
         this.userExtraInfoMapper = userExtraInfoMapper;
     }

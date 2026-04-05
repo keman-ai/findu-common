@@ -8,7 +8,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.slf4j.MDC;
 import org.springframework.core.annotation.Order;
-import org.springframework.stereotype.Component;
 
 import java.util.UUID;
 
@@ -16,7 +15,6 @@ import java.util.UUID;
  * 定时任务 TraceId 切面，负责为定时任务生成并绑定 TraceId。
  */
 @Aspect
-@Component
 @Order(1)
 public class SchedulerTraceIdAspect {
 

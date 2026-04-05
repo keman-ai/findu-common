@@ -10,9 +10,8 @@ import org.apache.hc.core5.util.Timeout;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.web.client.RestTemplate;
 
@@ -22,8 +21,6 @@ import java.util.concurrent.TimeUnit;
 /**
  * RestTemplate配置类，使用HttpClient 5提供连接池管理能力。
  */
-@Configuration
-@ConditionalOnClass(name = "org.apache.hc.client5.http.classic.HttpClient")
 public class RestTemplateConfig {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(RestTemplateConfig.class);
@@ -65,6 +62,7 @@ public class RestTemplateConfig {
      * 创建连接池管理器。
      */
     @Bean
+    @ConditionalOnMissingBean(name = "connectionManager")
     public PoolingHttpClientConnectionManager connectionManager() {
         connectionManager = new PoolingHttpClientConnectionManager();
         
@@ -90,6 +88,7 @@ public class RestTemplateConfig {
      * 创建带连接池的HttpClient。
      */
     @Bean
+    @ConditionalOnMissingBean(name = "httpClient")
     public CloseableHttpClient httpClient(PoolingHttpClientConnectionManager connectionManager) {
         // 配置请求参数
         RequestConfig requestConfig = RequestConfig.custom()
@@ -116,6 +115,7 @@ public class RestTemplateConfig {
      * RestTemplateBuilder会自动使用这个Bean。
      */
     @Bean
+    @ConditionalOnMissingBean
     public RestTemplate restTemplate(HttpClient httpClient) {
         HttpComponentsClientHttpRequestFactory factory = new HttpComponentsClientHttpRequestFactory();
         factory.setHttpClient(httpClient);

@@ -1,38 +1,41 @@
 package com.findu.common.exception;
 
-/**
- * 业务异常类，用于在流程中抛出业务错误。
- */
+import java.util.Map;
+
 public class BusinessException extends RuntimeException {
 
-    /**
-     * 错误码。
-     */
     private final ErrorCode errorCode;
+    private final Map<String, Object> context;
+
+    public BusinessException(ErrorCode errorCode, Map<String, Object> context) {
+        super(errorCode.getMessage());
+        this.errorCode = errorCode;
+        this.context = context;
+    }
+
+    public BusinessException(ErrorCode errorCode) {
+        this(errorCode, Map.of());
+    }
 
     /**
-     * 构造异常。
-     *
-     * @param errorCode 错误码
-     * @param message   错误描述
+     * Legacy constructor for backward compatibility.
+     * Maps to INTERNAL_ERROR with the message as howto.
+     */
+    public BusinessException(String message) {
+        super(message);
+        this.errorCode = CommonErrorCode.INTERNAL_ERROR;
+        this.context = Map.of("detail", message);
+    }
+
+    /**
+     * Legacy constructor: ErrorCode + custom message.
      */
     public BusinessException(ErrorCode errorCode, String message) {
         super(message);
         this.errorCode = errorCode;
+        this.context = Map.of("detail", message);
     }
 
-    /**
-     * 构造异常。
-     *
-     * @param errorCode 错误码
-     */
-    public BusinessException(ErrorCode errorCode) {
-        super(errorCode.getDefaultMessage());
-        this.errorCode = errorCode;
-    }
-
-    public ErrorCode getErrorCode() {
-        return errorCode;
-    }
+    public ErrorCode getErrorCode() { return errorCode; }
+    public Map<String, Object> getContext() { return context; }
 }
-

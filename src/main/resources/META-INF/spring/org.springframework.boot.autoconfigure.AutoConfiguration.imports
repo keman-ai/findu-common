@@ -1,0 +1,5 @@
+com.findu.common.autoconfigure.FinduCoreAutoConfiguration
+com.findu.common.autoconfigure.FinduCacheAutoConfiguration
+com.findu.common.autoconfigure.FinduMessagingAutoConfiguration
+com.findu.common.autoconfigure.FinduModerationAutoConfiguration
+com.findu.common.autoconfigure.FinduDataAutoConfiguration

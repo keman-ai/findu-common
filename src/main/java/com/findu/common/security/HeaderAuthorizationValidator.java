@@ -1,14 +1,12 @@
 package com.findu.common.security;
 
 import jakarta.servlet.http.HttpServletRequest;
-import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 
 /**
  * 从 HTTP Header 中提取用户/Agent 标识。
  * Gateway 层已完成鉴权，这里只做 header 读取。
  */
-@Component
 public class HeaderAuthorizationValidator implements AuthorizationValidator {
 
     @Override

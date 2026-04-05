@@ -1,8 +1,6 @@
 package com.findu.common.extend;
 
 import com.findu.common.extend.impl.EmptyExtendInfoProcessor;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import jakarta.annotation.PostConstruct;
 import java.util.ArrayList;
@@ -13,14 +11,17 @@ import java.util.Map;
 /**
  * 扩展信息处理器注册表
  */
-@Component
 public class ExtendInfoProcessorRegistry {
 
-    @Autowired(required = false)
-    private List<ExtendInfoProcessor> processors;
+    private final List<ExtendInfoProcessor> processors;
+    private final EmptyExtendInfoProcessor defaultProcessor;
 
-    @Autowired
-    private EmptyExtendInfoProcessor defaultProcessor;
+    public ExtendInfoProcessorRegistry(
+            List<ExtendInfoProcessor> processors,
+            EmptyExtendInfoProcessor defaultProcessor) {
+        this.processors = processors;
+        this.defaultProcessor = defaultProcessor;
+    }
 
     private Map<Integer, ExtendInfoProcessor> processorMap = new HashMap<>();
 

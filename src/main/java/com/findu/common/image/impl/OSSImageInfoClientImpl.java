@@ -4,7 +4,6 @@ import com.findu.common.image.ImageInfoClient;
 import com.findu.common.util.FastJsonHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestTemplate;
 
@@ -15,7 +14,6 @@ import java.util.Map;
  * OSS图片信息客户端实现。
  * 使用阿里云OSS的图片信息API获取图片宽高。
  */
-@Component
 public class OSSImageInfoClientImpl implements ImageInfoClient {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(OSSImageInfoClientImpl.class);

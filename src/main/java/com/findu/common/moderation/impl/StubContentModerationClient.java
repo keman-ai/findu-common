@@ -4,8 +4,6 @@ import com.findu.common.moderation.ContentModerationClient;
 import com.findu.common.moderation.ModerationResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.annotation.Profile;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.UUID;
@@ -13,8 +11,6 @@ import java.util.UUID;
 /**
  * 开发/测试环境使用的审核客户端实现，直接返回待审核状态。
  */
-@Profile({"dev", "test"})
-@Component
 public class StubContentModerationClient implements ContentModerationClient {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(StubContentModerationClient.class);

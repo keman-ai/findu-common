@@ -5,8 +5,6 @@ import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.annotation.Profile;
-import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import software.amazon.awssdk.regions.Region;
 import software.amazon.awssdk.services.sns.SnsClient;
@@ -24,8 +22,6 @@ import java.util.Map;
  *
  * @author system
  */
-@Component
-@Profile({"stable", "prod"})
 public class SNSProducer implements MQProducer {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(SNSProducer.class);

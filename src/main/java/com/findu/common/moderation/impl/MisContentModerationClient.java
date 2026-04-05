@@ -9,14 +9,11 @@ import com.findu.common.moderation.dto.ModerationSubmitResponse;
 import com.findu.common.moderation.dto.ModerationSubmitMixedRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Profile;
 import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
 import org.springframework.util.StringUtils;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
@@ -27,8 +24,6 @@ import java.util.List;
 /**
  * 内容审核HTTP客户端。
  */
-@Component
-@Profile({"stable", "prod"})
 public class MisContentModerationClient implements ContentModerationClient {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MisContentModerationClient.class);

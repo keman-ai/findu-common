@@ -6,8 +6,6 @@ import jakarta.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.scheduling.annotation.Scheduled;
-import org.springframework.stereotype.Component;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.util.StringUtils;
 
 import java.util.Collections;
@@ -24,8 +22,6 @@ import java.util.stream.Collectors;
  * 刷新失败时保留上次缓存值，保证服务降级可用。
  * </p>
  */
-@ConditionalOnClass(name = "org.springframework.data.redis.core.RedisTemplate")
-@Component
 public class CurrencyCache {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(CurrencyCache.class);

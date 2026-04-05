@@ -1,12 +1,10 @@
 package com.findu.common.moderation;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.stereotype.Component;
 
 /**
  * 内容审核客户端配置。
  */
-@Component
 @ConfigurationProperties(prefix = "moderation")
 public class ModerationProperties {
 
