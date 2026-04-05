@@ -68,6 +68,7 @@ public class FinduCoreAutoConfiguration {
 
     @Bean
     @ConditionalOnMissingBean(ImageInfoClient.class)
+    @ConditionalOnClass(name = "org.apache.hc.client5.http.classic.HttpClient")
     public OSSImageInfoClientImpl ossImageInfoClient(RestTemplate restTemplate) {
         return new OSSImageInfoClientImpl(restTemplate);
     }
