@@ -5,6 +5,7 @@ import com.findu.common.moderation.ModerationProperties;
 import com.findu.common.moderation.impl.MisContentModerationClient;
 import com.findu.common.moderation.impl.StubContentModerationClient;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -13,6 +14,7 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.web.client.RestTemplate;
 
 @AutoConfiguration
+@ConditionalOnClass(name = "org.apache.hc.client5.http.classic.HttpClient")
 @ConditionalOnProperty(name = "findu.moderation.enabled", havingValue = "true", matchIfMissing = true)
 @EnableConfigurationProperties(ModerationProperties.class)
 public class FinduModerationAutoConfiguration {

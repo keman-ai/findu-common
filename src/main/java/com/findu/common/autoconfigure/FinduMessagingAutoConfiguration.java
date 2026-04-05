@@ -5,6 +5,7 @@ import com.findu.common.mq.impl.LoggingMQProducer;
 import com.findu.common.mq.impl.SNSProducer;
 import com.findu.common.mq.impl.SNSProperties;
 import org.springframework.boot.autoconfigure.AutoConfiguration;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
@@ -12,6 +13,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Profile;
 
 @AutoConfiguration
+@ConditionalOnClass(name = "software.amazon.awssdk.services.sns.SnsClient")
 @ConditionalOnProperty(name = "findu.messaging.enabled", havingValue = "true", matchIfMissing = true)
 @EnableConfigurationProperties(SNSProperties.class)
 public class FinduMessagingAutoConfiguration {
